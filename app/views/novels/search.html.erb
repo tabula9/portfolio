@@ -1,0 +1,10 @@
+<p>テスト</p>
+<% i = 1 %>
+<% while @hash[i].present? do %>
+  <% @hash[i].each do |key, value| %>
+    <%= key %>
+    <%= value %><br>
+  <% end %>
+  <% i = i +1 %>
+  <br>
+<% end %>
