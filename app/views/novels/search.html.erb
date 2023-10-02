@@ -1,10 +1,16 @@
-<p>テスト</p>
-<% i = 1 %>
-<% while @hash[i].present? do %>
-  <% @hash[i].each do |key, value| %>
-    <%= key %>
-    <%= value %><br>
+<div class="search_form">
+    <%= form_with url: novels_search_path, local: true, method: :get do |f| %>
+        <%= f.text_field :word, placeholder: "キーワード名を入力", class: "search_field" %>
+        <%= f.submit "検索", class: "search_btn" %>
+    <% end %>
+</div>
+<div>
+  <% i = 1 %>
+  <% while @hash[i].present? do %>
+    <% @hash[i].each do |key, value| %>
+      <p><%= key %> : <%= value %></p>
+    <% end %>
+    <% i = i +1 %>
+    <p>--------------------------------------------</p>
   <% end %>
-  <% i = i +1 %>
-  <br>
-<% end %>
+</div>
