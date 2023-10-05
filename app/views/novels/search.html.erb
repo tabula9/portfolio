@@ -1,6 +1,18 @@
 <div class="search_form">
     <%= form_with url: novels_search_path, local: true, method: :get do |f| %>
-        <%= f.text_field :word, placeholder: "キーワード名を入力", class: "search_field" %>
+        <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field" %><br>
+        <label>
+          <%= f.check_box :genre, {multiple: true}, "101", nil %>異世界恋愛
+        </label>
+        <label>
+          <%= f.check_box :genre, {multiple: true}, "102", nil %>現実世界恋愛
+        </label><br>
+        <label>
+          <%= f.check_box :genre, {multiple: true}, "201", nil %>ハイファンタジー
+        </label>
+        <label>
+          <%= f.check_box :genre, {multiple: true}, "202", nil %>ローファンタジー
+        </label><br>
         <%= f.submit "検索", class: "search_btn" %>
     <% end %>
 </div>

@@ -9,6 +9,11 @@ class NovelsController < ApplicationController
       word = URI.encode_www_form(word: params[:word])
       narou_api += word
     end
+    if params[:genre].present?
+      genres = params[:genre].join('-')
+      genre = URI.encode_www_form(genre: genres)
+      narou_api += genre
+    end
     uri = URI.parse(narou_api)
     json = Net::HTTP.get(uri)
     @hash = JSON.parse(json)
