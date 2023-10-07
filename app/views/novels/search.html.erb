@@ -1,19 +1,21 @@
 <div class="search_form">
     <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
-        <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field" %><br>
+        <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field", value: @search_params[:word] %><br>
         <label>
-          <%= f.check_box :genre, {multiple: true}, "101", nil %>異世界恋愛
+          <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?("101")}, "101", nil %>異世界恋愛
         </label>
         <label>
-          <%= f.check_box :genre, {multiple: true}, "102", nil %>現実世界恋愛
+          <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?("102")}, "102", nil %>現実世界恋愛
         </label><br>
         <label>
-          <%= f.check_box :genre, {multiple: true}, "201", nil %>ハイファンタジー
+          <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?("201")}, "201", nil %>ハイファンタジー
         </label>
         <label>
-          <%= f.check_box :genre, {multiple: true}, "202", nil %>ローファンタジー
+          <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?("202")}, "202", nil %>ローファンタジー
         </label><br>
-        <%= f.select :order, [ ["総合ポイントの高い順", "hyoka"], ["ブックマーク数の多い順", "favnovelcnt"], ["年間ポイントの高い順", "yearlypoint"] ,["四半期ポイントの高い順", "quarterpoint"], ["月間ポイントの高い順", "monthlypoint"], ["週間ポイントの高い順", "weeklypoint"] ] %>
+        <%= f.select :order, [ ["総合ポイントの高い順", "hyoka"], ["ブックマーク数の多い順", "favnovelcnt"],
+         ["年間ポイントの高い順", "yearlypoint"] ,["四半期ポイントの高い順", "quarterpoint"], ["月間ポイントの高い順", "monthlypoint"],
+         ["週間ポイントの高い順", "weeklypoint"] ], selected: @search_params[:order] %>
         <%= f.submit "検索", class: "search_btn" %>
     <% end %>
 </div>
