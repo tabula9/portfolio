@@ -5,17 +5,16 @@ class NovelsController < ApplicationController
 
   def search
     narou_api = 'https://api.syosetu.com/novelapi/api/?out=json&'
-    if params[:word].present?
-      word = URI.encode_www_form(word: params[:word])
-      narou_api += word
-    end
     if params[:genre].present?
       genres = params[:genre].join('-')
-      genre = URI.encode_www_form(genre: genres)
-      narou_api += genre
+      request = URI.encode_www_form({ word: params[:word], order: params[:order], genre: genres })
+    elsif params[:word].present?
+      request = URI.encode_www_form({ word: params[:word], order: params[:order] })
+    else
+      request = URI.encode_www_form(order: params[:order])
     end
-    order = URI.encode_www_form(order: params[:order])
-    narou_api += order
+    narou_api += request
+    @api = narou_api
     uri = URI.parse(narou_api)
     json = Net::HTTP.get(uri)
     @hash = JSON.parse(json)
