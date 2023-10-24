@@ -18,6 +18,7 @@ class NovelsController < ApplicationController
     uri = URI.parse(narou_api)
     json = Net::HTTP.get(uri)
     @hash = JSON.parse(json)
+    @genres = Genre.all
   end
 
   private
