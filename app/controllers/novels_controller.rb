@@ -19,6 +19,7 @@ class NovelsController < ApplicationController
     json = Net::HTTP.get(uri)
     @hash = JSON.parse(json)
     @genres = Genre.all
+    @orders = Order.all
   end
 
   private

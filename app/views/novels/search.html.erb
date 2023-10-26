@@ -7,9 +7,7 @@
           <%= janru.name %>
         </label><br>
         <% end %>
-        <%= f.select :order, [ ["総合ポイントの高い順", "hyoka"], ["ブックマーク数の多い順", "favnovelcnt"],
-         ["年間ポイントの高い順", "yearlypoint"] ,["四半期ポイントの高い順", "quarterpoint"], ["月間ポイントの高い順", "monthlypoint"],
-         ["週間ポイントの高い順", "weeklypoint"] ], selected: @search_params[:order] %>
+        <%= f.collection_select(:order, @orders, :parameters, :name ) %>
         <%= f.submit "検索", class: "search_btn" %>
     <% end %>
 </div>
