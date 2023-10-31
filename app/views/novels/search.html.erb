@@ -12,7 +12,7 @@
           <%= f.check_box :stop, { checked: Array(@search_params[:stop]).eql?(["1"]) }, "1", nil %>
           長期連載停止中の小説を除外する
         </label><br>
-        <%= f.collection_select(:order, @orders, :parameters, :name ) %>
+        <%= f.collection_select(:order, @orders, :parameters, :name, {selected: @search_params[:order]} ) %>
         <%= f.submit "検索", class: "search_btn" %>
     <% end %>
 </div>
