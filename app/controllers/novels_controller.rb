@@ -13,7 +13,8 @@ class NovelsController < ApplicationController
     end
     genre_or = Array(@search_params[:genre]).join('-')
     buntai_or = Array(@search_params[:buntai]).join('-')
-    request = URI.encode_www_form({ order: @search_params[:order], stop: @search_params[:stop], genre: genre_or, buntai: buntai_or })
+    kaiwaritu = Array(@search_params[:kaiwaritu_min]).concat(Array(@search_params[:kaiwaritu_max])).uniq.join('-')
+    request = URI.encode_www_form({ order: @search_params[:order], stop: @search_params[:stop], kaiwaritu: kaiwaritu, genre: genre_or, buntai: buntai_or })
     narou_api += request
     @api = narou_api
     uri = URI.parse(narou_api)
@@ -27,6 +28,6 @@ class NovelsController < ApplicationController
   private
 
   def novel_search_params
-    params.fetch(:search, {}).permit(:word, :order, :stop, genre: [], buntai: [])
+    params.fetch(:search, {}).permit(:word, :order, :stop, :kaiwaritu_min, :kaiwaritu_max, genre: [], buntai: [])
   end
 end
