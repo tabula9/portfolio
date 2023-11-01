@@ -1,20 +1,29 @@
 <div class="search_form">
-    <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
-        <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field", value: @search_params[:word] %><br>
-        <% @genres.each do |janru| %>
-        <label>
-          <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?(janru.parameters)}, janru.parameters, nil %>
-          <%= janru.name %>
-        </label><br>
-        <% end %>
-        <p>--------------------------------------------</p>
-        <label>
-          <%= f.check_box :stop, { checked: Array(@search_params[:stop]).eql?(["1"]) }, "1", nil %>
-          長期連載停止中の小説を除外する
-        </label><br>
-        <%= f.collection_select(:order, @orders, :parameters, :name, {selected: @search_params[:order]} ) %>
-        <%= f.submit "検索", class: "search_btn" %>
+  <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
+    <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field", value: @search_params[:word] %><br>
+    <% @genres.each do |janru| %>
+      <label>
+        <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?(janru.parameters)}, janru.parameters, nil %>
+        <%= janru.name %>
+      </label><br>
     <% end %>
+    <p>--------------------------------------------</p>
+    <label>
+      <%= f.check_box :stop, { checked: Array(@search_params[:stop]).eql?(["1"]) }, "1", nil %>
+      長期連載停止中の小説を除外する
+    </label><br>
+    <p>--------------------------------------------</p>
+    <p>文体指定（＊試験提供機能のため適切な結果でない場合があります。）</p>
+    <% @buntais.each do |bun| %>
+      <label>
+        <%= f.check_box :buntai, { multiple: true, checked: Array(@search_params[:buntai]).include?(bun.parameters) }, bun.parameters, nil %>
+        <%= bun.name %>
+      </label><br>
+    <% end %>
+    <p>--------------------------------------------</p>
+    <%= f.collection_select(:order, @orders, :parameters, :name, {selected: @search_params[:order]} ) %>
+    <%= f.submit "検索", class: "search_btn" %>
+  <% end %>
 </div>
 <div>
   <p><%= @search_params %></p>

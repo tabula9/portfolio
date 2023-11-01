@@ -1,0 +1,2 @@
+class Buntai < ApplicationRecord
+end

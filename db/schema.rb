@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_25_091315) do
+ActiveRecord::Schema.define(version: 2023_11_01_190456) do
+
+  create_table "buntais", force: :cascade do |t|
+    t.string "name"
+    t.string "parameters"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"

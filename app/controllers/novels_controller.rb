@@ -11,8 +11,9 @@ class NovelsController < ApplicationController
     if @search_params[:word].present?
       narou_api += "word=#{url_encode(@search_params[:word])}&"
     end
-    genres = Array(@search_params[:genre]).join('-')
-    request = URI.encode_www_form({ order: @search_params[:order], stop: @search_params[:stop], genre: genres })
+    genre_or = Array(@search_params[:genre]).join('-')
+    buntai_or = Array(@search_params[:buntai]).join('-')
+    request = URI.encode_www_form({ order: @search_params[:order], stop: @search_params[:stop], genre: genre_or, buntai: buntai_or })
     narou_api += request
     @api = narou_api
     uri = URI.parse(narou_api)
@@ -20,11 +21,12 @@ class NovelsController < ApplicationController
     @hash = JSON.parse(json)
     @genres = Genre.all
     @orders = Order.all
+    @buntais = Buntai.all
   end
 
   private
 
   def novel_search_params
-    params.fetch(:search, {}).permit(:word, :order, :stop, genre: [])
+    params.fetch(:search, {}).permit(:word, :order, :stop, genre: [], buntai: [])
   end
 end
