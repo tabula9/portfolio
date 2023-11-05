@@ -1,12 +1,19 @@
 <div class="search_form">
   <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
     <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field", value: @search_params[:word] %><br>
-    <% @genres.each do |janru| %>
-      <label>
-        <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?(janru.parameters)}, janru.parameters, nil %>
-        <%= janru.name %>
-      </label><br>
-    <% end %>
+    <div class="accordion-container">
+      <div class="accordion-title js-accordion-title">
+        <p>ジャンル選択</p>
+      </div>
+      <div class="accordion-content">
+        <% @genres.each do |janru| %>
+          <label>
+            <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?(janru.parameters)}, janru.parameters, nil %>
+            <%= janru.name %>
+          </label><br>
+        <% end %>
+      </div>
+    </div>
     <p>--------------------------------------------</p>
     <label>
       <%= f.check_box :stop, { checked: Array(@search_params[:stop]).eql?(["1"]) }, "1", nil %>
@@ -35,6 +42,7 @@
 <div>
   <p><%= @search_params %></p>
   <p><%= @api %></p>
+  <p class="test">test</p>
   <% i = 1 %>
   <% while @hash[i].present? do %>
     <% @hash[i].each do |key, value| %>
