@@ -1,6 +1,13 @@
 <div class="search_form">
   <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
-    <%= f.search_field :word, placeholder: "キーワード名を入力", class: "search_field", value: @search_params[:word] %><br>
+    <label>
+      <span>検索</span>
+      <%= f.search_field :word, placeholder: "検索ワードを入力", class: "search_field", value: @search_params[:word] %>
+    </label><br>
+    <label>
+      <span>除外</span>
+      <%= f.search_field :notword, placeholder: "除外ワードを入力", class: "search_field", value: @search_params[:notword] %>
+    </label><br>
     <div class="accordion-container">
       <div class="accordion-title js-accordion-title">
         <p>ジャンル選択</p>

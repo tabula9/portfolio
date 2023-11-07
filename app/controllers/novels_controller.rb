@@ -11,6 +11,9 @@ class NovelsController < ApplicationController
     if @search_params[:word].present?
       narou_api += "word=#{url_encode(@search_params[:word])}&"
     end
+    if @search_params[:notword].present?
+      narou_api += "notword=#{url_encode(@search_params[:notword])}&"
+    end
     genre_or = Array(@search_params[:genre]).join('-')
     notgenre_or = Array(@search_params[:notgenre]).join('-')
     buntai_or = Array(@search_params[:buntai]).join('-')
@@ -29,6 +32,6 @@ class NovelsController < ApplicationController
   private
 
   def novel_search_params
-    params.fetch(:search, {}).permit(:word, :order, :stop, :kaiwaritu_min, :kaiwaritu_max, genre: [], notgenre: [], buntai: [])
+    params.fetch(:search, {}).permit(:word, :notword, :order, :stop, :kaiwaritu_min, :kaiwaritu_max, genre: [], notgenre: [], buntai: [])
   end
 end
