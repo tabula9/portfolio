@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <div class="partial">
+    <%= link_to "Home", novels_search_path %>
+    <%= link_to "設定", edit_user_registration_path %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%= link_to do %>
+      <%= current_user.name %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="partial">
+    <%= link_to "Home", novels_search_path %>
+    <%= link_to "Novel Searcherとは？" %>
+    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to "新規登録", new_user_registration_path %>
+  </div>
+<% end %>
