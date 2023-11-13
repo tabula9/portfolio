@@ -59,4 +59,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def password_edit
+
+  end
+   
+  def password_update
+    current_user.assign_attributes(account_update_params)
+    if current_user.save
+      sign_in(current_user, bypass: true)
+      redirect_to root_path, notice: "パスワードを更新しました"      
+    else
+      render "password_edit"
+    end
+  end
+
+  protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 end
