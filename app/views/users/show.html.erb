@@ -1,1 +1,9 @@
 <h3><%= @user.name %></h3>
+
+<% @favorites.each do |favorite| %>
+  <p>検索ワード<%= favorite.word %></p>
+  <p>除外ワード<%= favorite.notword %></p>
+  <p>指定ジャンル<%= favorite.genre %></p>
+  <p>除外ジャンル<%= favorite.notgenre %></p>
+  <p>小説出力順序<%= favorite.order %></p>
+<% end %>

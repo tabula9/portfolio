@@ -55,7 +55,11 @@
       </label><br>
     <% end %>
     <p>--------------------------------------------</p>
-    <%= f.collection_select(:order, @orders, :parameters, :name, {selected: @search_params[:order]} ) %>
+    <%= f.collection_select(:order, @orders, :parameters, :name, {selected: @search_params[:order]} ) %><br>
+    <% if user_signed_in? %>
+      この検索条件をお気に入り登録しますか？<%= f.radio_button :registration, "yes" %>はい<%= f.radio_button :registration, "no", checked:true %>いいえ
+      <%= f.hidden_field :user_id, value: @user.id %>
+    <% end %><br>
     <%= f.submit "検索", class: "search_btn" %>
   <% end %>
 </div>

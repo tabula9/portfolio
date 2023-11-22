@@ -10,13 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_09_191947) do
+ActiveRecord::Schema.define(version: 2023_11_21_092835) do
 
   create_table "buntais", force: :cascade do |t|
     t.string "name"
     t.string "parameters"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "word"
+    t.string "notword"
+    t.string "order"
+    t.string "stop"
+    t.integer "kaiwaritu_min"
+    t.integer "kaiwaritu_max"
+    t.string "genre"
+    t.string "notgenre"
+    t.string "buntai"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "registration"
   end
 
   create_table "genres", force: :cascade do |t|
