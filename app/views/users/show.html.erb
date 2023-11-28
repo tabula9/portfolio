@@ -5,5 +5,23 @@
   <p>除外ワード<%= favorite.notword %></p>
   <p>指定ジャンル<%= favorite.genre %></p>
   <p>除外ジャンル<%= favorite.notgenre %></p>
+  <p>長期連載停止中の小説を除外する<%= favorite.stop %></p>
+  <p>文体指定<%= favorite.buntai %></p>
   <p>小説出力順序<%= favorite.order %></p>
+  <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
+    <%= f.hidden_field :word, value: favorite.word %>
+    <%= f.hidden_field :notword, value: favorite.notword %>
+    <%= f.hidden_field :order, value: favorite.order %>
+    <%= f.hidden_field :stop, value: favorite.stop %>
+    <% favorite.genre.each do |hidden_genre| %>
+      <%= f.hidden_field :genre, multiple: true, value: hidden_genre %>
+    <% end %>
+    <% favorite.notgenre.each do |hidden_notgenre| %>
+      <%= f.hidden_field :notgenre, multiple: true, value: hidden_notgenre %>
+    <% end %>
+    <% favorite.buntai.each do |buntai| %>
+      <%= f.hidden_field :buntai, multiple: true, value: buntai %>
+    <% end %>
+    <%= f.submit "この条件で検索する" %>
+  <% end %>
 <% end %>
