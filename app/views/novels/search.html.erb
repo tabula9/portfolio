@@ -13,10 +13,10 @@
         <p>ジャンル選択</p>
       </div>
       <div class="accordion-content">
-        <% @genres.each do |janru| %>
+        <% @genres.each do |genre| %>
           <label>
-            <%= f.check_box :genre, {multiple: true, checked: Array(@search_params[:genre]).include?(janru.parameters)}, janru.parameters, nil %>
-            <%= janru.name %>
+            <%= f.check_box :genre_parameters, {multiple: true, checked: Array(@search_params[:genre_parameters]).include?(genre.parameters)}, genre.parameters, nil %>
+            <%= genre.name %>
           </label><br>
         <% end %>
       </div>
@@ -28,7 +28,7 @@
       <div class="accordion-content">
         <% @genres.each do |genre| %>
           <label>
-            <%= f.check_box :notgenre, {multiple: true, checked: Array(@search_params[:notgenre]).include?(genre.parameters)}, genre.parameters, nil %>
+            <%= f.check_box :notgenre_parameters, {multiple: true, checked: Array(@search_params[:notgenre_parameters]).include?(genre.parameters)}, genre.parameters, nil %>
             <%= genre.name %>
           </label><br>
         <% end %>
@@ -48,10 +48,10 @@
     <span>%までの作品を抽出します。</span>
     <p>--------------------------------------------</p>
     <p>文体指定（＊試験提供機能のため適切な結果でない場合があります。）</p>
-    <% @buntais.each do |bun| %>
+    <% @buntais.each do |buntai| %>
       <label>
-        <%= f.check_box :buntai, { multiple: true, checked: Array(@search_params[:buntai]).include?(bun.parameters) }, bun.parameters, nil %>
-        <%= bun.name %>
+        <%= f.check_box :buntai_parameters, { multiple: true, checked: Array(@search_params[:buntai_parameters]).include?(buntai.parameters) }, buntai.parameters, nil %>
+        <%= buntai.name %>
       </label><br>
     <% end %>
     <p>--------------------------------------------</p>

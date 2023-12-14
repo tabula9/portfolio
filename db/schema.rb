@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_28_091927) do
+ActiveRecord::Schema.define(version: 2023_12_11_092242) do
 
   create_table "buntais", force: :cascade do |t|
     t.string "name"
@@ -30,9 +30,13 @@ ActiveRecord::Schema.define(version: 2023_11_28_091927) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "registration"
-    t.text "genre"
-    t.text "notgenre"
-    t.text "buntai"
+  end
+
+  create_table "favorites_genres", force: :cascade do |t|
+    t.integer "favorite_id"
+    t.string "genre_parameters"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|

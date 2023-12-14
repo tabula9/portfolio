@@ -17,9 +17,13 @@ class NovelsController < ApplicationController
     @orders = Order.all
     @buntais = Buntai.all
     @user = current_user
-    @favorite = Favorite.new(@search_params)
+    @favorite = Favorite.new(novel_favorite_params)
     if @search_params[:registration].eql?("yes")
       @favorite.save
+      current_id = Favorite.last.id
+      @search_params[:genre_parameters].each do |genre|
+        FavoritesGenre.create(favorite_id: current_id, genre_parameters: genre)
+      end
       flash[:notice] = "この検索条件をお気に入り登録しました"
     end
   end
@@ -27,6 +31,10 @@ class NovelsController < ApplicationController
   private
 
   def novel_search_params
-    params.fetch(:search, {}).permit(:word, :notword, :order, :stop, :kaiwaritu_min, :kaiwaritu_max, :registration, :user_id, genre: [], notgenre: [], buntai: [])
+    params.fetch(:search, {}).permit(:word, :notword, :order, :stop, :kaiwaritu_min, :kaiwaritu_max, :registration, :user_id, genre_parameters: [], notgenre_parameters: [], buntai_parameters: [])
+  end
+
+  def novel_favorite_params
+    params.fetch(:search, {}).permit(:word, :notword, :order, :stop, :kaiwaritu_min, :kaiwaritu_max, :user_id)
   end
 end

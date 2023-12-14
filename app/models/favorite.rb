@@ -1,6 +1,5 @@
 class Favorite < ApplicationRecord
   belongs_to :user
-  serialize :genre, Array
-  serialize :notgenre, Array
-  serialize :buntai, Array
+  has_many :favorites_genres
+  has_many :genres, through: :favorites_genres
 end
