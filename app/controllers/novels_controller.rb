@@ -21,8 +21,14 @@ class NovelsController < ApplicationController
     if @search_params[:registration].eql?("yes")
       @favorite.save
       current_id = Favorite.last.id
-      @search_params[:genre_parameters].each do |genre|
+      Array(@search_params[:genre_parameters]).each do |genre|
         FavoritesGenre.create(favorite_id: current_id, genre_parameters: genre)
+      end
+      Array(@search_params[:notgenre_parameters]).each do |genre|
+        FavoritesNotgenre.create(favorite_id: current_id, notgenre_parameters: genre)
+      end
+      Array(@search_params[:buntai_parameters]).each do |buntai|
+        FavoritesBuntai.create(favorite_id: current_id, buntai_parameters: buntai)
       end
       flash[:notice] = "この検索条件をお気に入り登録しました"
     end

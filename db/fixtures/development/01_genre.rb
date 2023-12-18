@@ -7,4 +7,5 @@ genres = [ ['異世界恋愛', '101'], ['現実世界恋愛', '102'], ['ハイ�
 
 genres.each.with_index(1) do |(genre, number), i|
   Genre.seed(:id, {id: i, name: genre, parameters: number})
+  NotGenre.seed(:id, {id: i, name: genre, parameters: number})
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_11_092242) do
+ActiveRecord::Schema.define(version: 2023_12_17_091751) do
 
   create_table "buntais", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 2023_12_11_092242) do
     t.string "registration"
   end
 
+  create_table "favorites_buntais", force: :cascade do |t|
+    t.integer "favorite_id"
+    t.string "buntai_parameters"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "favorites_genres", force: :cascade do |t|
     t.integer "favorite_id"
     t.string "genre_parameters"
@@ -39,7 +46,21 @@ ActiveRecord::Schema.define(version: 2023_12_11_092242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "favorites_notgenres", force: :cascade do |t|
+    t.integer "favorite_id"
+    t.string "notgenre_parameters"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.string "parameters"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "not_genres", force: :cascade do |t|
     t.string "name"
     t.string "parameters"
     t.datetime "created_at", precision: 6, null: false
