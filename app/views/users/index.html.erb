@@ -36,4 +36,5 @@
     <% end %>
     <%= f.submit "この条件で検索する" %>
   <% end %>
+  <%= link_to "この条件を削除する" , user_path(favorite.id) , method: :delete, data: {confirm: "このお気に入りを本当に削除しますか？"} %>
 <% end %>

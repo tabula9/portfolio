@@ -3,7 +3,7 @@
     <%= link_to "Home", novels_search_path %>
     <%= link_to "設定", edit_user_registration_path %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to users_show_path do %>
+    <%= link_to users_path do %>
       <%= current_user.name %>
     <% end %>
   </div>
