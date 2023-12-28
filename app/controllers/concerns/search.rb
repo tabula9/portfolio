@@ -9,11 +9,16 @@ module Search
     if @search_params[:notword].present?
       narou_api += "notword=#{url_encode(@search_params[:notword])}&"
     end
+    if @search_params[:stop] == "true"
+      stopping = 1
+    else
+      stopping = ""
+    end
     genre_or = Array(@search_params[:genre_parameters]).join('-')
     notgenre_or = Array(@search_params[:notgenre_parameters]).join('-')
     buntai_or = Array(@search_params[:buntai_parameters]).join('-')
     kaiwaritu = Array(@search_params[:kaiwaritu_min]).concat(Array(@search_params[:kaiwaritu_max])).uniq.join('-')
-    request = URI.encode_www_form({ order: @search_params[:order], stop: @search_params[:stop], kaiwaritu: kaiwaritu, genre: genre_or, notgenre: notgenre_or, buntai: buntai_or })
+    request = URI.encode_www_form({ order: @search_params[:order], stop: stopping, kaiwaritu: kaiwaritu, genre: genre_or, notgenre: notgenre_or, buntai: buntai_or })
     narou_api += request
     @api = narou_api
     uri = URI.parse(narou_api)

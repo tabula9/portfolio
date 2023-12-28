@@ -36,7 +36,7 @@
     </div>
     <p>--------------------------------------------</p>
     <label>
-      <%= f.check_box :stop, { checked: Array(@search_params[:stop]).eql?(["1"]) }, "1", nil %>
+      <%= f.check_box :stop, { checked: Array(@search_params[:stop]).eql?(["true"]) }, "true", "false" %>
       長期連載停止中の小説を除外する
     </label><br>
     <p>--------------------------------------------</p>

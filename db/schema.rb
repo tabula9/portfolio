@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_17_091751) do
+ActiveRecord::Schema.define(version: 2023_12_26_091955) do
 
   create_table "buntais", force: :cascade do |t|
     t.string "name"
@@ -23,13 +23,12 @@ ActiveRecord::Schema.define(version: 2023_12_17_091751) do
     t.string "word"
     t.string "notword"
     t.string "order"
-    t.string "stop"
+    t.boolean "stop"
     t.integer "kaiwaritu_min"
     t.integer "kaiwaritu_max"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.string "registration"
   end
 
   create_table "favorites_buntais", force: :cascade do |t|

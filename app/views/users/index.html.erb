@@ -13,7 +13,7 @@
       <%= genre.name %>
     <% end %>
   </p>
-  <p>長期連載停止中の小説を除外する<%= favorite.stop %></p>
+  <p>長期連載停止中の小説を除外する<%= favorite.stop ? '◯' : '' %></p>
   <p>文体指定
     <% favorite.buntais.each do |buntai| %>
       <%= buntai.name %>
