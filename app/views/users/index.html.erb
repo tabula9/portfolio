@@ -19,11 +19,11 @@
       <%= buntai.name %>
     <% end %>
   </p>
-  <p>小説出力順序<%= favorite.order %></p>
+  <p>小説出力順序<%= favorite.order.name %></p>
   <%= form_with scope: :search, url: novels_search_path, local: true, method: :get do |f| %>
     <%= f.hidden_field :word, value: favorite.word %>
     <%= f.hidden_field :notword, value: favorite.notword %>
-    <%= f.hidden_field :order, value: favorite.order %>
+    <%= f.hidden_field :order_parameters, value: favorite.order_parameters %>
     <%= f.hidden_field :stop, value: favorite.stop %>
     <% favorite.genres.each do |genre| %>
       <%= f.hidden_field :genre_parameters, multiple: true, value: genre.parameters %>

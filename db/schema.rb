@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_26_091955) do
+ActiveRecord::Schema.define(version: 2023_12_29_092105) do
 
   create_table "buntais", force: :cascade do |t|
     t.string "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2023_12_26_091955) do
   create_table "favorites", force: :cascade do |t|
     t.string "word"
     t.string "notword"
-    t.string "order"
+    t.string "order_parameters"
     t.boolean "stop"
     t.integer "kaiwaritu_min"
     t.integer "kaiwaritu_max"
