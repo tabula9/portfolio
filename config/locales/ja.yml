@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      favorite: お気に入り
+    attributes:
+      favorite:
+        word: 検索ワード
+        notword: 検索除外ワード
+        kaiwaritu_min: 会話率の最低パーセント
+        kaiwaritu_max: 会話率の最大数パーセント
