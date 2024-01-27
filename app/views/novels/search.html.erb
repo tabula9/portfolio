@@ -41,12 +41,18 @@
       長期連載停止中の小説を除外する
     </label><br>
     <p>--------------------------------------------</p>
+    <p>初回掲載日を指定して絞り込むことができます。</p>
+    <%= f.date_field :min_firstup, value: Array(@search_params[:min_firstup]) %>
+    <span>から</span>
+    <%= f.date_field :max_firstup, value: Array(@search_params[:max_firstup]) %>
+    <span>までの期間に新規投稿された作品を抽出します。</span>
+    <p>--------------------------------------------</p>
     <p>抽出する小説の会話率を％単位で指定できます。</p>
     <span>会話率が</span>
     <%= f.number_field :kaiwaritu_min, min: 0, max: 100, value: @search_params[:kaiwaritu_min] %>
-    <span>%から</span>
+    <span>%以上</span>
     <%= f.number_field :kaiwaritu_max, min: 0, max: 100, value: @search_params[:kaiwaritu_max] %>
-    <span>%までの作品を抽出します。</span>
+    <span>%以下までの作品を抽出します。</span>
     <p>--------------------------------------------</p>
     <p>文体指定（＊試験提供機能のため適切な結果でない場合があります。）</p>
     <% @buntais.each do |buntai| %>

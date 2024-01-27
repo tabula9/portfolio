@@ -18,7 +18,7 @@ module Search
     notgenre_or = Array(@search_params[:notgenre_parameters]).join('-')
     buntai_or = Array(@search_params[:buntai_parameters]).join('-')
     kaiwaritu = Array(@search_params[:kaiwaritu_min]).concat(Array(@search_params[:kaiwaritu_max])).uniq.join('-')
-    request = URI.encode_www_form({ order: @search_params[:order_parameters], stop: stopping, kaiwaritu: kaiwaritu, genre: genre_or, notgenre: notgenre_or, buntai: buntai_or })
+    request = URI.encode_www_form({ order: @search_params[:order_parameters], stop: stopping, minfirstup: @search_params[:min_firstup], maxfirstup: @search_params[:max_firstup], kaiwaritu: kaiwaritu, genre: genre_or, notgenre: notgenre_or, buntai: buntai_or })
     narou_api += request
     @api = narou_api
     uri = URI.parse(narou_api)

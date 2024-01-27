@@ -40,10 +40,10 @@ class NovelsController < ApplicationController
   private
 
   def novel_search_params
-    params.fetch(:search, {}).permit(:word, :notword, :order_parameters, :stop, :kaiwaritu_min, :kaiwaritu_max, :registration, :user_id, genre_parameters: [], notgenre_parameters: [], buntai_parameters: [])
+    params.fetch(:search, {}).permit(:word, :notword, :order_parameters, :stop, :min_firstup, :max_firstup, :kaiwaritu_min, :kaiwaritu_max, :registration, :user_id, genre_parameters: [], notgenre_parameters: [], buntai_parameters: [])
   end
 
   def novel_favorite_params
-    params.fetch(:search, {}).permit(:word, :notword, :order_parameters, :stop, :kaiwaritu_min, :kaiwaritu_max, :user_id)
+    params.fetch(:search, {}).permit(:word, :notword, :order_parameters, :stop, :min_firstup, :max_firstup, :kaiwaritu_min, :kaiwaritu_max, :user_id)
   end
 end

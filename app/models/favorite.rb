@@ -12,8 +12,13 @@ class Favorite < ApplicationRecord
   def min_max_check
     a = kaiwaritu_min || 1
     b = kaiwaritu_max || 1
+    c = min_firstup || 1
+    d = max_firstup || 1
     if a > b
-      errors.add(:kaiwaritu_min, "は会話率の最大パーセント以下にしてください。")
+      errors.add(:kaiwaritu_max, "が最小値より小さくなっています。")
+    end
+    if c > d
+      errors.add(:max_firstup, "が期間指定の開始日より前の日付になっています。")
     end
   end
 end

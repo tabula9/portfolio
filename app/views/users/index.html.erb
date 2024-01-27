@@ -14,7 +14,8 @@
     <% end %>
   </p>
   <p>長期連載停止中の小説を除外する<%= favorite.stop ? '◯' : '' %></p>
-  <p>指定会話率<%= favorite.kaiwaritu_min %>％〜<%= favorite.kaiwaritu_max %>％</p>
+  <p>初回掲載日<%= favorite.min_firstup %>から<%= favorite.max_firstup %>までの期間</p>
+  <p>指定会話率<%= favorite.kaiwaritu_min %>％以上<%= favorite.kaiwaritu_max %>％以下</p>
   <p>文体指定
     <% favorite.buntais.each do |buntai| %>
       <%= buntai.name %>
@@ -26,6 +27,8 @@
     <%= f.hidden_field :notword, value: favorite.notword %>
     <%= f.hidden_field :order_parameters, value: favorite.order_parameters %>
     <%= f.hidden_field :stop, value: favorite.stop %>
+    <%= f.hidden_field :min_firstup, value: favorite.min_firstup %>
+    <%= f.hidden_field :max_firstup, value: favorite.max_firstup %>
     <%= f.hidden_field :kaiwaritu_min, value: favorite.kaiwaritu_min %>
     <%= f.hidden_field :kaiwaritu_max, value: favorite.kaiwaritu_max %>
     <% favorite.genres.each do |genre| %>

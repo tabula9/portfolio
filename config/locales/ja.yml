@@ -6,5 +6,5 @@ ja:
       favorite:
         word: 検索ワード
         notword: 検索除外ワード
-        kaiwaritu_min: 会話率の最低パーセント
-        kaiwaritu_max: 会話率の最大数パーセント
+        kaiwaritu_max: 会話率の最大値
+        max_firstup: 初回掲載日の期間指定最終日
